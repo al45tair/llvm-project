@@ -29,6 +29,8 @@ void test_message_for_bad_value() {
     // Exact message format varies by platform.
 #if defined(_AIX)
     LIBCPP_ASSERT(msg.rfind("Error -1 occurred", 0) == 0);
+#elif defined(TEST_HAS_MUSL)
+    LIBCPP_ASSERT(msg.rfind("No error information", 0) == 0);
 #else
     LIBCPP_ASSERT(msg.rfind("Unknown error", 0) == 0);
 #endif
