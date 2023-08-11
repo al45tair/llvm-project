@@ -114,6 +114,10 @@
 #endif
 #endif
 
+#if defined(__musl__)
+#define TEST_HAS_MUSL
+#endif
+
 #if TEST_STD_VER >= 11
 # define TEST_ALIGNOF(...) alignof(__VA_ARGS__)
 # define TEST_ALIGNAS(...) alignas(__VA_ARGS__)

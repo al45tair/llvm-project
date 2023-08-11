@@ -383,6 +383,8 @@ protected:
     } else {
         Builder.defineMacro("__gnu_linux__");
     }
+    if (Triple.isMusl())
+      Builder.defineMacro("__musl__", "1");
     // Work around Issue #47994 until glibc PR build/27558 is fixed.
     if (Triple.isSPARC())
       Builder.defineMacro("__NO_INLINE__");
