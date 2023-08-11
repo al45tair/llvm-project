@@ -7,6 +7,13 @@
  *===-----------------------------------------------------------------------===
  */
 
+#if defined(__musl__)
+
+// On musl systems, use the system header
+#include_next <stddef.h>
+
+#else
+
 #if !defined(__STDDEF_H) || defined(__need_ptrdiff_t) ||                       \
     defined(__need_size_t) || defined(__need_wchar_t) ||                       \
     defined(__need_NULL) || defined(__need_wint_t)
@@ -120,3 +127,5 @@ typedef __WINT_TYPE__ wint_t;
 #endif /* __need_wint_t */
 
 #endif
+
+#endif /* !defined(__musl__) */
